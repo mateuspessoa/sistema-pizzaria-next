@@ -42,6 +42,29 @@ const Product = () => {
                     <span className={styles.number}>Grande</span>
                 </div>
             </div>
+            <h3 className={styles.choose}>Escolha ingredientes adicionais</h3>
+            <div className={styles.ingredients}>
+                <div className={styles.options}>
+                    <input type="checkbox" id="double" name="double" className={styles.checkbox} />
+                    <label htmlFor="double">Ingredientes em Dobro</label>
+                </div>
+                <div className={styles.options}>
+                    <input type="checkbox" id="cheese" name="cheese" className={styles.checkbox} />
+                    <label htmlFor="cheese">Adicional de Queijo</label>
+                </div>
+                <div className={styles.options}>
+                    <input type="checkbox" id="spicy" name="spicy" className={styles.checkbox} />
+                    <label htmlFor="spicy">Adicional de Molho Picante</label>
+                </div>
+                <div className={styles.options}>
+                    <input type="checkbox" id="garlic" name="garlic" className={styles.checkbox} />
+                    <label htmlFor="garlic">Adicional de Alho</label>
+                </div>
+            </div>
+            <div className={styles.add}>
+                <input type="number" defaultValue={1} className={styles.quantity} />
+                <button className={styles.button}>Adicionar ao Carrinho</button>
+            </div>
         </div>
     </div>
   )
