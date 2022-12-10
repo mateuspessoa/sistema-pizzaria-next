@@ -7,7 +7,7 @@ const Cart = () => {
         <div className={styles.left}>
             <table className={styles.table}>
                 <tbody>
-                    <tr className={styles.tr}>
+                    <tr className={styles.trTitle}>
                         <th>Produto</th>
                         <th>Nome</th>
                         <th>Adicionais</th>
@@ -15,7 +15,30 @@ const Cart = () => {
                         <th>Quantidade</th>
                         <th>Total</th>
                     </tr>
-                    <tr>
+                    <tr className={styles.tr}>
+                        <td>
+                            <div className={styles.imgContainer}>
+                                <Image src="/img/pizza.png" layout="fill" objectFit="cover" alt="pizza" />
+                            </div>
+                        </td>
+                        <td className={styles.nameContainer}>
+                            <span className={styles.name}>MUÇARELA</span>
+                        </td>
+                        <td>
+                            <span className={styles.extras}>Ingredientes em Dobro, Molho Picante</span>
+                        </td>
+                        <td>
+                            <span className={styles.price}>R$ 25.90</span>
+                        </td>
+                        <td>
+                            <span className={styles.quantity}>2</span>
+                        </td>
+                        <td>
+                            <span className={styles.total}>R$ 56.10</span>
+                        </td>
+                    </tr>
+
+                    <tr className={styles.tr}>
                         <td>
                             <div className={styles.imgContainer}>
                                 <Image src="/img/pizza.png" layout="fill" objectFit="cover" alt="pizza" />
@@ -38,13 +61,13 @@ const Cart = () => {
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr className={styles.tr}>
                         <td>
                             <div className={styles.imgContainer}>
                                 <Image src="/img/pizza.png" layout="fill" objectFit="cover" alt="pizza" />
                             </div>
                         </td>
-                        <td>
+                        <td className={styles.nameContainer}>
                             <span className={styles.name}>MUÇARELA</span>
                         </td>
                         <td>
@@ -61,30 +84,7 @@ const Cart = () => {
                         </td>
                     </tr>
 
-                    <tr>
-                        <td>
-                            <div className={styles.imgContainer}>
-                                <Image src="/img/pizza.png" layout="fill" objectFit="cover" alt="pizza" />
-                            </div>
-                        </td>
-                        <td>
-                            <span className={styles.name}>MUÇARELA</span>
-                        </td>
-                        <td>
-                            <span className={styles.extras}>Ingredientes em Dobro, Molho Picante</span>
-                        </td>
-                        <td>
-                            <span className={styles.price}>R$ 25.90</span>
-                        </td>
-                        <td>
-                            <span className={styles.quantity}>2</span>
-                        </td>
-                        <td>
-                            <span className={styles.total}>R$ 56.10</span>
-                        </td>
-                    </tr>
-
-                    <tr>
+                    <tr className={styles.tr}>
                         <td>
                             <div className={styles.imgContainer}>
                                 <Image src="/img/pizza.png" layout="fill" objectFit="cover" alt="pizza" />
