@@ -44,6 +44,7 @@
   .text:first-child {
     font-size: 12px;
     font-weight: 500;
+    margin-bottom: 8px;
   }
   
   .text:last-child {
