@@ -5,6 +5,23 @@
     align-items: center;
 }
 
+.container_btn_add {
+  width: 100%;;
+  margin-bottom: 50px;
+}
+
+.btn_add {
+  margin-left: 25px;
+  width: 128px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d1411e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .title {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -27,6 +44,12 @@
 }
 
 @media screen and (max-width: 480px) {
+
+    .container_btn_add {
+      display: flex;
+      justify-content: center;
+    }
+
     .title {
       text-align: center;
     }
