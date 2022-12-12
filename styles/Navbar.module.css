@@ -19,6 +19,11 @@
   .item ul {
     margin-left: 78px;
   }
+
+  .item a {
+    text-decoration: none;
+    color: white;
+  }
   
   .item:nth-child(2) {
     flex: 3;
