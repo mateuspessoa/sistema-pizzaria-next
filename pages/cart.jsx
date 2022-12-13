@@ -1,21 +1,39 @@
 import Image from "next/image";
 import styles from "../styles/Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
+import { useRouter } from "next/router";
+import { reset } from "../redux/cartSlice";
+import axios from "axios";
 
 const Cart = () => {
-  // This values are the props in the UI
-  const amount = "2";
+  const cart = useSelector((state) => state.cart);
+  const [open, setOpen] = useState(false);
+
+  const amount = cart.total;
   const currency = "BRL";
   const style = { layout: "vertical" };
 
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+
+  const router = useRouter();
+
+  const createOrder = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:3000/api/orders", data);
+      if (res.status === 201) {
+        dispatch(reset());
+        router.push(`/orders/${res.data._id}`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
@@ -57,9 +75,14 @@ const Cart = () => {
                 return orderId;
               });
           }}
-          onApprove={function (data, actions) {
-            return actions.order.capture().then(function () {
-              // Your code here after capture the order
+          onApprove={async function (data, actions) {
+            const details = await actions.order.capture();
+            const shipping = details.purchase_units[0].shipping;
+            createOrder({
+              customer: shipping.name.full_name,
+              address: shipping.address.address_line_1,
+              total: cart.total,
+              method: 1,
             });
           }}
         />
@@ -134,16 +157,22 @@ const Cart = () => {
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Total:</b>R$ {cart.total}
           </div>
-          <button className={styles.button}>COMPRAR AGORA!</button>
-          <PayPalScriptProvider
-            options={{
-              "client-id": "test",
-              components: "buttons",
-              currency: "BRL",
-            }}
-          >
-            <ButtonWrapper currency={currency} showSpinner={false} />
-          </PayPalScriptProvider>
+          {open ? (
+            <PayPalScriptProvider
+              options={{
+                "client-id":
+                  "AcFxqL5Xgp68AgqfsxVPUKSpmM3DkkaBpfTkXi5QE2J6ngggsFWybS_PrEPACF0LRNT6YCVryHPRouYr",
+                components: "buttons",
+                currency: "BRL",
+              }}
+            >
+              <ButtonWrapper currency={currency} showSpinner={false} />
+            </PayPalScriptProvider>
+          ) : (
+            <button onClick={() => setOpen(true)} className={styles.button}>
+              COMPRAR AGORA!
+            </button>
+          )}
         </div>
       </div>
     </div>
