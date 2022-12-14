@@ -14,7 +14,16 @@ const handler = async (req, res) => {
             res.status(500).json(err);
           }
     }
-    if(method === "PUT"){}
+    if(method === "PUT"){
+      try {
+        const status = await Order.findByIdAndUpdate(id, req.body, {
+          new: true,
+        });
+        res.status(201).json(status)
+      } catch (error) {
+        console.log(err)
+      }
+    }
     if(method === "DELETE"){}
 }
 

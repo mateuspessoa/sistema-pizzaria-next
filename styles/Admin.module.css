@@ -1,0 +1,42 @@
+.container {
+    padding: 50px;
+    display: flex;
+}
+
+.item {
+    flex: 1;
+}
+
+.table {
+    width: 100%;
+    border-spacing: 20px;
+    text-align: left;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 70px;
+}
+
+.button:first-child {
+    background-color: teal;
+    margin-right: 10px;
+}
+
+.button:last-child {
+    background-color: crimson;
+}
+
+.button_stage {
+    background-color: rgb(181, 143, 74);
+    border: none;
+    width: 120px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}

@@ -3,14 +3,13 @@ import Image from "next/image"
 import axios from "axios"
 
 const Order = ({ order }) => {
-    const status = 0;
-
+    const status = order.Status;
+  
     const statusClass = (index) => {
-        
-        if(index - status < 1) return styles.done
-        if(index - status === 1) return styles.inProgress
-        if(index - status > 1) return styles.undone
-    }
+      if (index - status < 1) return styles.done;
+      if (index - status === 1) return styles.inProgress;
+      if (index - status > 1) return styles.undone;
+    };
 
 
   return (
