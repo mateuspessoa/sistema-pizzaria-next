@@ -14,6 +14,7 @@ import axios from "axios";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [open, setOpen] = useState(false);
+  const [cash, setCash] = useState(false)
 
   const amount = cart.total;
   const currency = "BRL";
@@ -158,6 +159,8 @@ const Cart = () => {
             <b className={styles.totalTextTitle}>Total:</b>R$ {cart.total}
           </div>
           {open ? (
+            <div className={styles.paymentMethods}>
+            <button className={styles.payButton} onClick={() => setCash(true)}>PAGAR NA ENTREGA</button>
             <PayPalScriptProvider
               options={{
                 "client-id":
@@ -168,6 +171,7 @@ const Cart = () => {
             >
               <ButtonWrapper currency={currency} showSpinner={false} />
             </PayPalScriptProvider>
+          </div>
           ) : (
             <button onClick={() => setOpen(true)} className={styles.button}>
               COMPRAR AGORA!
