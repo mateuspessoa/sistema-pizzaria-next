@@ -40,3 +40,7 @@
     cursor: pointer;
     border-radius: 4px;
 }
+
+.error {
+    color: red;
+}
